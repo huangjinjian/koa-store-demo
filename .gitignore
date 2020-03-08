@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 .DS_Store
 node_modules
 /dist
@@ -23,6 +24,8 @@ yarn-error.log*
 *.sln
 *.sw?
 =======
+=======
+>>>>>>> 0dce41e0083e3f10e39dee0f3f2bfb11093c8d67
 =======
 >>>>>>> 0dce41e0083e3f10e39dee0f3f2bfb11093c8d67
 =======
@@ -133,6 +136,9 @@ dist
 .tern-port
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 0dce41e0083e3f10e39dee0f3f2bfb11093c8d67
+=======
 >>>>>>> 0dce41e0083e3f10e39dee0f3f2bfb11093c8d67
 =======
 >>>>>>> 0dce41e0083e3f10e39dee0f3f2bfb11093c8d67
