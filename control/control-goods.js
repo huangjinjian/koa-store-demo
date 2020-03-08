@@ -1,47 +1,36 @@
-let db = require("../lib/mongodb");
+
+
+let m_good = require("../models/m_good");
 
 module.exports = {
-  // 添加商品
-  addProduct: async (ctx, next) => {
-    try {
-      let res = await db.insert("goods", [
-        {
-          productId: "10001",
-          productName: "15a米6",
-          prodcutPrice: 12,
-          prodcutImg: "15.jpg"
-        },
-        {
-          productId: "10002",
-          productName: "16a本",
-          prodcutPrice: 14,
-          prodcutImg: "16.jpg"
-        }
-      ]);
+  productAdd: async (ctx)=>{
+    try{
+      let findRes = await m_good.productAdd(ctx.request.body.data)
+      console.log(findRes);
       ctx.body = {
-        state: 0,
-        msg: "suc",
-        data: ""
-      };
-    } catch (err) {
+        state : 1,
+        msg:'suc',
+      }
+    }catch(err){
       ctx.body = {
-        state: 1,
-        msg: err.message
-      };
+        state : 0,
+        msg:err,
+      }
     }
+    
   },
   // 获取商品列表
   productList: async (ctx, next) => {
     try {
-      let list = await db.find("goods", {});
+      let list = await m_good.goodList("goods",ctx.request.query);
       ctx.body = {
-        state: 0,
+        state: 1,
         msg: "suc",
         data: list
       };
     } catch (err) {
       ctx.body = {
-        state: 1,
+        state: 0,
         msg: err.message
       };
     }

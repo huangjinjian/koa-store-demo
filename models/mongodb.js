@@ -8,7 +8,17 @@ const dbName = "store";
 
 let obj = {};
 
-const connect = function(callback) {
+connect = function(callback) {
+  const client = new MongoClient(url);
+  client.connect(function(err) {
+    if (err) throw err;
+    const db = client.db(dbName);
+    console.log("Connected successfully to server");
+    callback(client, db);
+  });
+};
+
+obj.connect = function(callback) {
   const client = new MongoClient(url);
   client.connect(function(err) {
     if (err) throw err;
@@ -33,7 +43,6 @@ obj.createIndex = (cName, fn) => {
   });
 };
 
-// crud   增加 查 改 删
 // 插入
 
 obj.insert = (cName, arrData) => {
@@ -52,7 +61,6 @@ obj.insert = (cName, arrData) => {
 };
 
 // 查询
-
 obj.find = (cName, options) => {
   return new Promise((resole, reject) => {
     connect((client, db) => {
@@ -69,6 +77,10 @@ obj.find = (cName, options) => {
     });
   });
 };
+
+// 查询 skip limit
+
+
 
 // 改
 obj.update = (cName, filter, updated) => {

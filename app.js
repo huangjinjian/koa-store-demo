@@ -20,6 +20,7 @@ app.use(
 );
 app.use(json());
 app.use(logger());
+app.use(require("koa-static")(__dirname + "/web"));
 app.use(require("koa-static")(__dirname + "/public"));
 
 app.use(
@@ -30,10 +31,10 @@ app.use(
 
 // logger
 app.use(async (ctx, next) => {
-  const start = new Date();
+  // const start = new Date();
   await next();
-  const ms = new Date() - start;
-  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
+  // const ms = new Date() - start;
+  // console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
 });
 
 // routes
